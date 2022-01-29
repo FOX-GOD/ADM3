@@ -6,8 +6,8 @@ __Recomendado__
 
 __Instalar solo SCRIPT__
 
-```wget https://raw.githubusercontent.com/FOX-GOD/print/main/Plus; chmod 777 Plus;./Plus```
+````wget https://raw.githubusercontent.com/FOX-GOD/Prime/main/Plus; chmod 777 Plus;./Plus````
 
 __Instalar la SCRIPT y actualizar paquetes del sistema__
 
-```apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/FOX-GOD/print/main/Plus; chmod 777 Plus;./Plus```
+````apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/FOX-GOD/Prime/main/Plus; chmod 777 Plus;./Plus````
