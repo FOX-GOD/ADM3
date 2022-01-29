@@ -2,7 +2,7 @@
 # __ADM~WOLI 1.0__
 
 __Recomendado__
-- Ubuntu 16 y 18
+-Ubuntu 16 y 18
 
 __Instalar solo SCRIPT__
 
