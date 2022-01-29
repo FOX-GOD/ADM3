@@ -249,9 +249,9 @@ fun_edithost() {
     fi
 }
 [[ ! -e /usr/lib/vpsmanager ]] && exit 0
-tput setaf 7;tput setab 4;tput bold;printf '%30s%s%-15s\n' "Criar Usuário SSH";tput sgr0
+tput setaf 7;tput setab 4;tput bold;printf '%30s%s%-15s\n' "Crear Usuário SSH";tput sgr0
 echo ""
-echo -ne "\033[1;32mNome do usuário:\033[1;37m ";read username
+echo -ne "\033[1;32mName of User:\033[1;37m ";read username
 [[ -z $username ]] && {
 	echo -e "\n${cor1}Nome de usuário vazio ou invalido!${scor}\n"
 	exit 1
@@ -277,7 +277,7 @@ sizemax=$(echo ${#username})
 	echo -e "${cor1}use no máximo 10 caracteres!${scor}\n"
 	exit 1
 }
-echo -ne "\033[1;32mSenha:\033[1;37m ";read password
+echo -ne "\033[1;32mPass of User:\033[1;37m ";read password
 [[ -z $password ]] && {
 	echo -e "\n${cor1}Senha vazia ou invalida!${scor}\n"
 	exit 1
@@ -287,7 +287,7 @@ sizepass=$(echo ${#password})
 	echo -e "\n${cor1}Senha curta!, use no mínimo 4 caracteres${scor}\n"
 	exit 1
 }
-echo -ne "\033[1;32mDias para expirar:\033[1;37m ";read dias
+echo -ne "\033[1;32mDays of Expired:\033[1;37m ";read dias
 [[ -z $dias ]] && {
 	echo -e "\n${cor1}Numero de dias vazio!${scor}\n"
 	exit 1
@@ -300,7 +300,7 @@ echo -ne "\033[1;32mDias para expirar:\033[1;37m ";read dias
 	echo -e "\n${cor1}O número deve ser maior que zero!${scor}\n"
 	exit 1
 }
-echo -ne "\033[1;32mLimite de conexões:\033[1;37m ";read sshlimiter
+echo -ne "\033[1;32mLimit of Connect:\033[1;37m ";read sshlimiter
 [[ -z $sshlimiter ]] && {
 	echo -e "\n${cor1}Você deixou o limite de conexões vazio!${scor}\n"
 	exit 1
