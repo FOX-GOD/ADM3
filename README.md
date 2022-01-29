@@ -1,5 +1,5 @@
 
-# __ADM~WOLI 1.0__
+# __ADM~WOLI 1.0__(2.0)
 
 __Recomendado__
 - Ubuntu 16 y 18
