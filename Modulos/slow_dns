@@ -44,7 +44,7 @@ initslow() {
         screen -r -S "slow_dns" -X quit >/dev/null 2>&1
         screen -wipe > /dev/null 2>&1
         sed -i '/slow_dns/d' /etc/autostart
-        echo -e "\n${RED}SLOWDNS DESATIVADO !${SCOLOR}"
+        echo -e "\n${RED}SLOWDNS DESACTIVADO !${SCOLOR}"
         sleep 2
         conexao
     else
