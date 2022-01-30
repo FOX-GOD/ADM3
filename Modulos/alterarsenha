@@ -1,7 +1,7 @@
 #!/bin/bash
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-10s\n' "Alterar Senha de Usuário" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-10s\n' "Cambiar Contraseña de Usuario" ; tput sgr0
 echo ""
-echo -e "\033[1;33mLISTA DE USUARIOS E SUAS SENHAS: \033[0m"
+echo -e "\033[1;33m LISTA DE USUARIOS Y SUS PASSWORDS \033[0m"
 echo""
 _userT=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody)
 i=0
@@ -16,7 +16,7 @@ while read _user; do
 		_senha='Null'
 	fi
 	suser=$(echo -e "\033[1;31m[\033[1;36m$i\033[1;31m] \033[1;37m- \033[1;32m$_user\033[0m")
-    ssenha=$(echo -e "\033[1;33mSenha\033[1;37m: $_senha")
+    ssenha=$(echo -e "\033[1;33mPass.\033[1;37m: $_senha")
     printf '%-60s%s\n' "$suser" "$ssenha"
 	_userPass+="\n${_oP}:${_user}"
 done <<< "${_userT}"
