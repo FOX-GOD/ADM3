@@ -70,7 +70,7 @@ fun_atts () {
 
 } > /dev/null 2>&1
 
-echo -e "  VPS * ADM" | figlet
+echo -e " VPS * ADM " | figlet
 
 echo " "
 
@@ -96,7 +96,7 @@ vrs2=$(sed -n '1 p' /tmp/att | sed -e 's/[^0-9]//ig')
 
 [[ "$vrs1" == "$vrs2" ]] && {
 
-  echo -e " \033[1;36m     O SCRIPT JA ESTA ATUALIZADO!\033[1;32m\n"
+  echo -e " \033[1;36m     EL SCRIPT YA ESTA ACTUALIZADO!\033[1;32m\n"
 
   rm /tmp/att > /dev/null 2>&1
 
