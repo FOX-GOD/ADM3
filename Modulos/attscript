@@ -70,7 +70,8 @@ fun_atts () {
 
 } > /dev/null 2>&1
 
-echo -e "   VPS ADMI" | figlet
+#echo -e "   VPS ADMI" | figlet
+figlet "    VPS ADM" | lolcat 
 
 echo " "
 
