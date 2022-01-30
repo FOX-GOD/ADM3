@@ -172,17 +172,18 @@ _usor=$(printf '%-8s' "$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }')")
 _usop=$(printf '%-1s' "$(top -bn1 | awk '/Cpu/ { cpu = "" 100 - $8 "%" }; END { print cpu }')")
 _core=$(printf '%-1s' "$(grep -c cpu[0-9] /proc/stat)")
 _system=$(printf '%-14s' "$system")
-_hora=$(printf '%(%H:%M:%S)T')
+#_hora=$(printf '%(%H:%M:%S)T')
+_hora=$(printf '%(%r)T')
 _onlin=$(printf '%-5s' "$_onli")
 _userexp=$(printf '%-5s' "$_expuser")
 _tuser=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody | wc -l)
 clear
 echo -e "\033[0;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\E[41;1;37m  SCRIPT  |      ADM ~ WOLI™      |  VERCION 1.0  \E[0m"
+echo -e "\E[41;1;37m  SCRIPT  |      ADM ~ WOLI™      |  VERCION 2.0  \E[0m"
 echo -e "\033[0;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;32mSISTEMA            MEMORIA RAM      PROCESADOR "
 echo -e "\033[1;31mOS: \033[1;37m$_system \033[1;31mTotal:\033[1;37m$_ram \033[1;31mNucleos: \033[1;37m$_core\033[0m"
-echo -e "\033[1;31mHora: \033[1;37m$_hora     \033[1;31mEn uso: \033[1;37m$_usor \033[1;31mEn uso: \033[1;37m$_usop\033[0m"
+echo -e "\033[1;31mHr: \033[1;37m$_hora    \033[1;31mEn uso: \033[1;37m$_usor \033[1;31mEn uso: \033[1;37m$_usop\033[0m"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 [[ ! -e /tmp/att ]]  && {
     echo -e "\033[1;32mOnlines:\033[1;37m $_onlin     \033[1;31mExpireds: \033[1;37m$_userexp  \033[1;32mAccounts: \033[1;37m$_tuser\033[0m"
@@ -286,7 +287,8 @@ _usor=$(printf '%-8s' "$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }')")
 _usop=$(printf '%-1s' "$(top -bn1 | awk '/Cpu/ { cpu = "" 100 - $8 "%" }; END { print cpu }')")
 _core=$(printf '%-1s' "$(grep -c cpu[0-9] /proc/stat)")
 _system=$(printf '%-14s' "$system")
-_hora=$(printf '%(%H:%M:%S)T')
+#_hora=$(printf '%(%H:%M:%S)T')
+IP=$(wget -qO- ipv4.icanhazip.com)
 _onlin=$(printf '%-5s' "$_onli")
 _userexp=$(printf '%-5s' "$_expuser")
 _tuser=$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody | wc -l)
@@ -296,7 +298,7 @@ echo -e "\E[41;1;37m  SCRIPT  |      ADM ~ WOLI™      |  VERCION 1.0  \E[0m"
 echo -e "\033[0;31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;32mSISTEMA            MEMORIA RAM      PROCESADOR "
 echo -e "\033[1;31mOS: \033[1;37m$_system \033[1;31mTotal:\033[1;37m$_ram \033[1;31mNucleos: \033[1;37m$_core\033[0m"
-echo -e "\033[1;31mHora: \033[1;37m$_hora     \033[1;31mEn uso: \033[1;37m$_usor \033[1;31mEn uso: \033[1;37m$_usop\033[0m"
+echo -e "\033[1;31mIP: \033[1;37m$IP     \033[1;31mEn uso: \033[1;37m$_usor \033[1;31mEn uso: \033[1;37m$_usop\033[0m"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\033[1;32mOnlines:\033[1;37m $_onlin     \033[1;31mExpireds: \033[1;37m$_userexp  \033[1;32mAccounts: \033[1;37m$_tuser\033[0m"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
