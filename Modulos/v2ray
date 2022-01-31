@@ -1,5 +1,5 @@
 #!/bin/bash
-# Edit: By @WOLI0101
+# Author: Jrohy
 # github: https://github.com/Jrohy/multi-v2ray
 
 #定时任务北京执行时间(0~23)
@@ -102,6 +102,8 @@ removeV2Ray() {
     rm -rf /etc/bash_completion.d/v2ray.bash >/dev/null 2>&1
     rm -rf /usr/local/bin/v2ray >/dev/null 2>&1
     rm -rf /etc/v2ray_util >/dev/null 2>&1
+    rm -rf /etc/profile.d/iptables.sh >/dev/null 2>&1
+    rm -rf /root/.iptables >/dev/null 2>&1
 
     #删除v2ray定时更新任务
     crontab -l|sed '/SHELL=/d;/v2ray/d'|sed '/SHELL=/d;/xray/d' > crontab.txt
@@ -118,6 +120,12 @@ removeV2Ray() {
     sed -i '/v2ray/d' ~/$ENV_FILE
     sed -i '/xray/d' ~/$ENV_FILE
     source ~/$ENV_FILE
+
+    RC_SERVICE=`systemctl status rc-local|grep loaded|egrep -o "[A-Za-z/]+/rc-local.service"`
+
+    RC_FILE=`cat $RC_SERVICE|grep ExecStart|awk '{print $1}'|cut -d = -f2`
+
+    sed -i '/iptables/d' ~/$RC_FILE
 
     colorEcho ${GREEN} "uninstall success!"
 }
@@ -152,7 +160,7 @@ installDependent(){
         ${PACKAGE_MANAGER} install socat crontabs bash-completion which -y
     else
         ${PACKAGE_MANAGER} update
-        ${PACKAGE_MANAGER} install socat cron bash-completion ntpdate -y
+        ${PACKAGE_MANAGER} install socat cron bash-completion ntpdate gawk -y
     fi
 
     #install python3 & pip
@@ -161,6 +169,34 @@ installDependent(){
 
 updateProject() {
     [[ ! $(type pip 2>/dev/null) ]] && colorEcho $RED "pip no install!" && exit 1
+
+    [[ -e /etc/profile.d/iptables.sh ]] && rm -f /etc/profile.d/iptables.sh
+
+    RC_SERVICE=`systemctl status rc-local|grep loaded|egrep -o "[A-Za-z/]+/rc-local.service"`
+
+    RC_FILE=`cat $RC_SERVICE|grep ExecStart|awk '{print $1}'|cut -d = -f2`
+
+    if [[ ! -e $RC_FILE || -z `cat $RC_FILE|grep iptables` ]];then
+        LOCAL_IP=`curl -s http://api.ipify.org 2>/dev/null`
+        [[ `echo $LOCAL_IP|grep :` ]] && IPTABLE_WAY="ip6tables" || IPTABLE_WAY="iptables" 
+        if [[ ! -e $RC_FILE || -z `cat $RC_FILE|grep "/bin/bash"` ]];then
+            echo "#!/bin/bash" >> $RC_FILE
+        fi
+        if [[ -z `cat $RC_SERVICE|grep "\[Install\]"` ]];then
+            cat >> $RC_SERVICE << EOF
+
+[Install]
+WantedBy=multi-user.target
+EOF
+            systemctl daemon-reload
+        fi
+        echo "[[ -e /root/.iptables ]] && $IPTABLE_WAY-restore -c < /root/.iptables" >> $RC_FILE
+        chmod +x $RC_FILE
+        systemctl restart rc-local
+        systemctl enable rc-local
+
+        $IPTABLE_WAY-save -c > /root/.iptables
+    fi
 
     pip install -U v2ray_util
 
@@ -235,10 +271,9 @@ installFinish() {
     if [[ ${INSTALL_WAY} == 0 ]]; then
         clear
 
-        echo -e "\n\033[1;32mV2RAY INSTALADO COM SUCESSO !\033[0m"
         v2ray info
 
-        echo -e "Por favor insira o comando 'v2ray' para gerenciar v2ray\n"
+        echo -e "please input 'v2ray' command to manage v2ray\n"
     fi
 }
 
