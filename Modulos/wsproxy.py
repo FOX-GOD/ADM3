@@ -1,20 +1,133 @@
-#!/usr/bin/env python
-# encoding: utf-8
+#!/bin/bash
+col1='\033[1;31m' 
+col2='\033[1;32m' 
+col3='\033[1;33m' 
+col4='\033[1;34m' 
+col5='\033[1;35m' 
+col6='\033[1;36m'
+col7='\033[1;37m' 
+barra="\033[0;31m=====================================================\033[0m"
+
+
+blanco(){
+	[[ !  $2 = 0 ]] && {
+		echo -e "\033[1;37m$1\033[0m"
+	} || {
+		echo -ne " \033[1;37m$1:\033[0m "
+	}
+}
+
+col(){
+
+	nom=$(printf '%-55s' "\033[0;92m${1} \033[0;31m>> \033[1;37m${2}")
+	echo -e "	$nom\033[0;31m${3}   \033[0;92m${4}\033[0m"
+}
+
+
+vacio(){
+
+	blanco "\n no se puede ingresar campos vacios..."
+}
+
+cancelar(){
+
+	echo -e "\n \033[3;49;31minstalacion cancelada...\033[0m"
+}
+
+continuar(){
+
+	echo -e " \033[3;49;32mEnter para continuar...\033[0m"
+}
+
+fun_bar () {
+          comando[0]="$1"
+          comando[1]="$2"
+          (
+          [[ -e $HOME/fim ]] && rm $HOME/fim
+          ${comando[0]} > /dev/null 2>&1
+          ${comando[1]} > /dev/null 2>&1
+          touch $HOME/fim
+          ) > /dev/null 2>&1 &
+          tput civis
+		  echo -e "${col1}---------------------------------------------------${col0}"
+          echo -ne "${col7}    ESPERE..${col5}["
+          while true; do
+          for((i=0; i<18; i++)); do
+          echo -ne "${col4}#"
+          sleep 0.2s
+          done
+         [[ -e $HOME/fim ]] && rm $HOME/fim && break
+         echo -e "${col5}"
+         sleep 1s
+         tput cuu1
+         tput dl1
+         echo -ne "${col7}    ESPERE..${col5}["
+         done
+         echo -e "${col5}]${col7} -${col2} INSTALADO !${col7}"
+         tput cnorm
+		 echo -e "${col1}---------------------------------------------------${col0}"
+        }
+        
+
+
+
+inst_ssl () {
+echo -e "$barra"
+pkill -f stunnel4
+echo "Destruyendo Stunnel Activo"
+apt purge stunnel4 -y > /dev/null 2>&1
+echo "Reinstalando Stunnel"
+apt install stunnel4 -y > /dev/null 2>&1
+echo -e "$barra"
+read -p "Ingresa Puerto SSL a USAR : " porta
+pt=$(netstat -nplt |grep 'sshd' | awk -F ":" NR==1{'print $2'} | cut -d " " -f 1)
+echo -e "\033[1;31mPUERTO PROXY PYTHON\033[0m"
+echo -e "$barra"
+read -p "Introduzca puerto proxy: " redirporta
+echo ""
+echo -e "\033[1;37m Mensaje en el mini Banner por defecto ( @WOLI0101 ) \033[1;36m"
+echo -e "\033[1;37m No exagerar en el mini Banner  \033[1;36m"
+echo -e "\e[0;31m Soporta HTML\e[0m"
+read -p " :" msgbanner
+[[ "$msgbanner" = "" ]]&& msgbanner=' <font color="red"> @WOLI0101 </font> '
+echo 
+echo -e "Respuesta de Encabezado ( 101,200,484,500,etc ) \n \033[1;37m"
+read -p "Response Status (Default 101 ) : " respo_stat
+[[ -z $respo_stat  ]] && respo_stat="101"
+echo "Configurando COnexion SSL"
+echo -e "cert = /etc/stunnel/stunnel.pem\nclient = no\nsocket = a:SO_REUSEADDR=1\nsocket = l:TCP_NODELAY=1\nsocket = r:TCP_NODELAY=1\n\n[stunnel]\naccept = ${porta}\nconnect = 127.0.0.1:${redirporta}\n" > /etc/stunnel/stunnel.conf
+openssl genrsa -out key.pem 2048 > /dev/null 2>&1
+(echo "$(curl -sSL ipinfo.io > info && cat info | grep country | awk '{print $2}' | sed -e 's/[^a-z0-9 -]//ig')" ; echo "" ; echo "$(wget -qO- ifconfig.me):81" ; echo "" ; echo "" ; echo "" ; echo "@cloudflare" )|openssl req -new -x509 -key key.pem -out cert.pem -days 1095 > /dev/null 2>&1
+cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
+sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
+service stunnel4 restart > /dev/null 2>&1
+echo -e "SSL ACtivo Exitosamente"
+}
+
+
+inst_py () {
+#echo -e "\033[1;33m                 CONFIGURANDO PYTHON.. "
+pkill -f $redirporta
+pidpython=$(ps x | grep "$HOME/proxy_copia.py" | grep -v grep |awk '{print $1}') 
+pidpython1=$(ps x | grep "proxy.py" | grep -v grep |awk '{print $1}') 
+[[ ! -z $pidpython ]] && kill -9 $pidpython
+[[ ! -z $pidpython1 ]] && kill -9 $pidpython1
+apt install python -y  > /dev/null 2>&1
+apt install screen -y  > /dev/null 2>&1
+pt=$(netstat -nplt |grep 'sshd' | awk -F ":" NR==1{'print $2'} | cut -d " " -f 1)
+ cat <<EOF > proxy.py
 import socket, threading, thread, select, signal, sys, time, getopt
 
-PASS = ''
+# CONFIG
 LISTENING_ADDR = '0.0.0.0'
-try:
-   LISTENING_PORT = int(sys.argv[1])
-except:
-   LISTENING_PORT = 80
+LISTENING_PORT = 1080
+PASS = ''
+
+# CONST
 BUFLEN = 4096 * 4
 TIMEOUT = 60
-MSG = ''
-COR = '<font color="null">'
-FTAG = '</font>'
-DEFAULT_HOST = "127.0.0.1:22"
-RESPONSE = "HTTP/1.1 101 " + str(COR) + str(MSG) + str(FTAG) + "\r\n\r\n"
+DEFAULT_HOST = "127.0.0.1:$pt"
+RESPONSE = 'HTTP/1.1 $respo_stat $msgbanner \r\nContent-length: 0\r\n\r\nHTTP/1.1 200 conexion exitosa\r\n\r\n'
  
 class Server(threading.Thread):
     def __init__(self, host, port):
@@ -224,9 +337,9 @@ class ConnectionHandler(threading.Thread):
 
 
 def print_usage():
-    print 'Use: proxy.py -p <port>'
-    print '       proxy.py -b <ip> -p <porta>'
-    print '       proxy.py -b 0.0.0.0 -p 22'
+    print 'Usage: proxy.py -p <port>'
+    print '       proxy.py -b <bindAddr> -p <port>'
+    print '       proxy.py -b 0.0.0.0 -p 1080'
 
 def parse_args(argv):
     global LISTENING_ADDR
@@ -249,11 +362,12 @@ def parse_args(argv):
 
 def main(host=LISTENING_ADDR, port=LISTENING_PORT):
     
-    print "\033[0;34m━"*8,"\033[1;32m PROXY WEBSOCKET","\033[0;34m━"*8,"\n"
-    print "\033[1;33mIP:\033[1;32m " + LISTENING_ADDR
-    print "\033[1;33mPORTA:\033[1;32m " + str(LISTENING_PORT) + "\n"
-    print "\033[0;34m━"*10,"\033[1;32m VPSMANAGER","\033[0;34m━\033[1;37m"*11,"\n"
-    
+    print "\n ==============================\n"
+    print "\n         PYTHON PROXY          \n"
+    print "\n ==============================\n"
+    print "corriendo ip: " + LISTENING_ADDR
+    print "corriendo port: " + str(LISTENING_PORT) + "\n"
+    print "Se ha Iniciado Por Favor Cierre el Terminal\n"
     
     server = Server(LISTENING_ADDR, LISTENING_PORT)
     server.start()
@@ -262,10 +376,65 @@ def main(host=LISTENING_ADDR, port=LISTENING_PORT):
         try:
             time.sleep(2)
         except KeyboardInterrupt:
-            print 'Parando...'
+            print 'Stopping...'
             server.close()
             break
     
 if __name__ == '__main__':
     parse_args(sys.argv[1:])
     main()
+EOF
+echo $redirporta > /bin/ejecutar/proxtport
+cat proxy.py > $HOME/proxy_copia.py
+screen -dmS pythonwe python $HOME/proxy_copia.py -p $redirporta&
+
+}
+
+menuintro() {
+clear&&clear
+echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
+echo -e "\033[1;32m              PYTHON + SSL | By: @WOLI0101 "
+echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
+echo -e "\033[1;36m        SCRIPT REESTRUCTURA y AUTOCONFIGURACION "
+echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
+echo -e "\033[1;37m      Requiere tener el puerto libre ,$redirporta y el $porta"
+echo
+	while :
+	do
+		#col "5)" "\033[1;33mCONFIGURAR Trojan"
+		echo -e $barra
+		col "1)" "\033[1;33mAUTOCONFIGURACION DE SERVICIO PYTHON -> SSL"
+		#echo -e $barra
+		#col "2)" "\033[1;33mCONFIGURAR PYTHON (RESPONSE STATUS 200)"
+		echo -e $barra
+		col "0)" "SALIR \033[0;31m"
+		echo -e $barra
+		blanco "opcion" 0
+		read opcion
+		case $opcion in
+			1)
+			echo -e "\033[1;33m INSTALADO SSL.. "
+			inst_ssl
+			echo -e "Instalando Redireccion Python"
+			fun_bar 'inst_py'
+			rm -rf proxy.py
+			echo -e " Respaldo Guardado en $HOME/proxy_copia.py "
+			echo -e "                 INSTALACIÓN TERMINADA"
+			echo
+			echo -e "Solucionado el error de conectividad mediante el puerto $porta con SNI"
+echo
+
+			;;
+			2)
+			#source <(curl -sSL https://www.dropbox.com/s/rpknp7f1l9u0q59/Proxy.sh)
+			;;
+			0) break;;
+			*) blanco "\n selecione una opcion del 0 al 2" && sleep 1;;
+		esac
+	done
+continuar
+read foo
+echo
+#echo -e " \033[1;37m  Ve a Menu 1, Opcion 2, \n   Y crea tu usuario para Pruebas "
+}
+menuintro
