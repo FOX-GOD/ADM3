@@ -42,7 +42,7 @@ clear; exit 1
 }
 }
 echo -e "\033[1;31m════════════════════════════════════════════════════\033[0m"
-tput setaf 7; tput setab 4; tput bold; printf '%40s%s%-12s\n' "BIEN VENIDO A ADM WOLI" ; tput sgr0
+tput setaf 7; tput setab 4; tput bold; printf '%40s%s%-12s\n' "BIEN VENIDO A ADM WOLI™" ; tput sgr0
 echo -e "\033[1;31m════════════════════════════════════════════════════\033[0m"
 echo ""
 echo -e "            \033[1;31mATENCION! \033[1;33mESTE SCRIPT IRA A !\033[0m"
@@ -117,7 +117,7 @@ echo ""
 echo -e "\033[1;33mALGUNOS PAQUETES SON EXTREMADAMENTE NECESARIOS !\033[0m"
 echo ""
 inst_pct () {
-_pacotes=("bc" "screen" "nano" "unzip" "lsof" "netstat" "net-tools" "dos2unix" "nload" "jq" "curl" "figlet" "python" "python3" "python-pip")
+_pacotes=("bc" "screen" "nano" "unzip" "lsof" "netstat" "net-tools" "dos2unix" "nload" "jq" "curl" "figlet" "python3" "python-pip")
 for _prog in ${_pacotes[@]}; do
 apt install $_prog -y
 done
