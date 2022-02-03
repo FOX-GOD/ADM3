@@ -117,7 +117,7 @@ echo ""
 echo -e "\033[1;33mALGUNOS PAQUETES SON EXTREMADAMENTE NECESARIOS !\033[0m"
 echo ""
 inst_pct () {
-_pacotes=("bc" "screen" "nano" "unzip" "lsof" "netstat" "net-tools" "dos2unix" "nload" "jq" "curl" "figlet" "python3" "python-pip")
+_pacotes=("bc" "screen" "nano" "unzip" "lsof" "netstat" "net-tools" "dos2unix" "nload" "jq" "curl" "figlet" "python" "python3" "python-pip")
 for _prog in ${_pacotes[@]}; do
 apt install $_prog -y
 done
