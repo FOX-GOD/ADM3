@@ -85,7 +85,7 @@ echo -e "\n\033[0;34m═══════════════════�
 echo ""
 echo -e "                 \033[1;33m• \033[1;31mATENCION \033[1;33m• \033[0m"
 echo ""
-echo -e "\033[1;33mUna base de Datos de Usuários \033[1;32m(usuarios.db) \033[1;33mFoi"
+echo -e "\033[1;33mUna base de Datos de Usuários \033[1;32m(usuarios.db) \033[1;33mFue"
 echo -e "Encontrada! Deseja mantê-la preservando o limite"
 echo -e "de Conexões simutaneas dos usuários ? Ou Deseja"
 echo -e "criar uma nova base de dados ?\033[0m"
