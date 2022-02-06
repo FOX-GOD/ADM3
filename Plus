@@ -65,7 +65,7 @@ sleep 1s
 wget https://raw.githubusercontent.com/FOX-GOD/Prime/main/Install/list > /dev/null 2>&1
 chmod +x list > /dev/null 2>&1
 sleep 3s
-echo "/bin/adm" > /bin/h && chmod +x /bin/h > /dev/null 2>&1
+echo "/bin/menu" > /bin/h && chmod +x /bin/h > /dev/null 2>&1
 rm versao* > /dev/null 2>&1
 wget https://raw.githubusercontent.com/FOX-GOD/Prime/main/Install/versao > /dev/null 2>&1
 > /dev/null 2>&1
