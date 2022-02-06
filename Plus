@@ -1,4 +1,8 @@
 #!/bin/bash
+#============================================#
+#  Autor Script con Key: @WOLI1001 (WOLI L.) #
+#  Fcha: 01/2/2022                           #
+#============================================#
 clear
 [[ "$(whoami)" != "root" ]] && {
 echo -e "\033[1;33m[\033[1;31mErro\033[1;33m] \033[1;37m- \033[1;33mvocê precisa executar como root\033[0m"
