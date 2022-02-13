@@ -1,5 +1,7 @@
 #!/bin/bash
-
+########################
+#       @WOLI0101      #
+########################
 _lvk=$(wget -qO- https://raw.githubusercontent.com/FOX-GOD/Prime/main/Sistema/versao)
 IP=$(wget -qO- ipv4.icanhazip.com)
 IP2=$(wget -qO- http://whatismyip.akamai.com/)
@@ -13,6 +15,7 @@ dpkg-reconfigure --frontend noninteractive tzdata >/dev/null 2>&1
 	rm -rf $_Ink/list >/dev/null 2>&1 && cat /dev/null >~/.bash_history && history -c && exit 0
 }
 [[ ! -d /etc/VPSManager ]] && mkdir /etc/VPSManager
+[[ ! -d /etc/VPSManager/v2ray ]] && mkdir /etc/VPSManager/v2ray
 [[ ! -d /etc/VPSManager/senha ]] && mkdir /etc/VPSManager/senha
 [[ ! -e /etc/VPSManager/Exp ]] && touch /etc/VPSManager/Exp
 [[ ! -d /etc/VPSManager/userteste ]] && mkdir /etc/VPSManager/userteste
@@ -39,11 +42,6 @@ for _arq in ${_mdls[@]}; do
 	[[ -e $_dir1/$_arq ]] && rm $_dir1/$_arq >/dev/null 2>&1
 	wget -c -P $_dir1 https://raw.githubusercontent.com/FOX-GOD/Prime/main/Modulos/$_arq
 	chmod +x $_dir1/$_arq
-done
-for _arq in ${_mdls2[@]}; do
-	[[ -e $_dir3/$_arq ]] && rm $_dir3/$_arq >/dev/null 2>&1
-	wget -c -P $_dir3 https://raw.githubusercontent.com/FOX-GOD/Prime/main/Modulos/$_arq
-	chmod +x $_dir3/$_arq
 done
 cd /var/www/html && mkdir server
 cd /root && ./onlineapp.sh
@@ -82,20 +80,6 @@ clear
 	for proc in $(ps x | grep 'dmS' | grep -v 'grep' | awk {'print $1'}); do
 		screen -r -S "$proc" -X quit	
 done
-	screen -wipe >/dev/null
-	echo '#!/bin/bash
-clear
-
-#INICIO AUTOMATICO' >/etc/autostart
-	chmod +x /etc/autostart
-} || {
-	[[ $(ps x | grep "bot_gen" | grep -v grep | wc -l) != '0' ]] && wget -qO- https://raw.githubusercontent.com/FOX-GOD/Prime/main/Install/ShellBot.sh
-	for proc in $(ps x | grep 'dmS' | grep -v 'grep' | awk {'print $1'}); do
-		screen -r -S "$proc" -X quit	
-done
-	screen -wipe >/dev/null
-	echo '#!/bin/bash
-clear
 
 #INICIO AUTOMATICO' >/etc/autostart
 	chmod +x /etc/autostart
