@@ -256,9 +256,9 @@ case "$x" in
    ;;
    0|00)
    echo -e "\033[1;31mSaliendo...\033[0m"
-   sleep 2
+   sleep 1s
    clear
-   exit;
+   exit
    ;;
    *)
    echo -e "\n\033[1;31m Opcion Invalida !\033[0m"
@@ -417,9 +417,9 @@ case "$x" in
    ;;
    0 | 00)
    echo -e "\033[1;31mSaliendo...\033[0m"
-   sleep 2
+   sleep 1s
    clear
-   exit;
+   exit
    ;;
    *)
    echo -e "\n\033[1;31m Opcion Invalida !\033[0m"
