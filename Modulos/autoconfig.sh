@@ -392,12 +392,12 @@ screen -dmS pythonwe python $HOME/proxy_copia.py -p $redirporta&
 
 menuintro() {
 clear&&clear
-echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
+echo -e "\033[1;31m————————————————————————————————————————————————————\033[1;37m"
 echo -e "\033[1;30m              PYTHON + SSL | By: @WOLI0101 "
-echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
+echo -e "\033[1;31m————————————————————————————————————————————————————\033[1;37m"
 echo -e "\033[1;36m        SCRIPT REESTRUCTURA y AUTOCONFIGURACION "
-echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
-echo -e "\033[1;37m      Requiere tener el puerto libre ,$redirporta y el $porta"
+echo -e "\033[1;31m————————————————————————————————————————————————————\033[1;37m"
+echo -e "\033[1;37m      Requiere tener el puerto libre ,443 y el 80"
 echo
 	while :
 	do
@@ -409,7 +409,7 @@ echo
 		echo -e $barra
 		col "0)" "SALIR \033[0;31m"
 		echo -e $barra
-		blanco "Elija una Opcion: " 0
+		blanco "Elija una Opcion " 0
 		read opcion
 		case $opcion in
 			1)
