@@ -403,8 +403,9 @@ echo
 	do
 		#col "5)" "\033[1;33mCONFIGURAR Trojan"
 		echo -e $barra
-		col "1)" "\033[1;33mAUTOCONFIGURACION DE  PYTHON & SSL"
+		col "1)" "\033[1;33mINSTALAR SERVICIO DE PYTHON & SSL"
 		echo -e $barra
+		#col "2)" "\033[1;33mDETENER SERVICIO DE  PYTHON & SSL"
 		col "2)" "\033[1;33mCONFIGURAR PYTHON (RESPONSE STATUS 200)"
 		echo -e $barra
 		col "0)" "SALIR \033[0;31m"
@@ -425,6 +426,8 @@ echo
 echo
 
 			;;
+			#2)unistall
+			#;;
 			2)
 			source <(curl -sSL https://www.dropbox.com/s/rpknp7f1l9u0q59/Proxy.sh)
 			;;
