@@ -435,8 +435,8 @@ echo
 			*) blanco "\n selecione una opcion del 0 al 2" && sleep 1;;
 		esac
 	done
-continuar
-read foo
+#continuar
+#read foo
 echo
 #echo -e " \033[1;37m  Ve a Menu 1, Opcion 2, \n   Y crea tu usuario para Pruebas "
 }
