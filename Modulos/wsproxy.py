@@ -9,7 +9,7 @@ else:
 #Pass
 PASS = ''
 
-# CONST
+# CONST 20.04
 BUFLEN = 4096 * 4
 TIMEOUT = 60
 DEFAULT_HOST = '127.0.0.1:22'
