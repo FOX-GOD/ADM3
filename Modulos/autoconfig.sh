@@ -94,14 +94,14 @@ echo
 echo -e "Respuesta de Encabezado ( 101,200,484,500,etc ) \n \033[1;37m"
 read -p "Response Status (Default 101 ) : " respo_stat
 [[ -z $respo_stat  ]] && respo_stat="101"
-echo "Configurando COnexion SSL"
+echo "Configurando Conexion SSL"
 echo -e "cert = /etc/stunnel/stunnel.pem\nclient = no\nsocket = a:SO_REUSEADDR=1\nsocket = l:TCP_NODELAY=1\nsocket = r:TCP_NODELAY=1\n\n[stunnel]\naccept = ${porta}\nconnect = 127.0.0.1:${redirporta}\n" > /etc/stunnel/stunnel.conf
 openssl genrsa -out key.pem 2048 > /dev/null 2>&1
 (echo "$(curl -sSL ipinfo.io > info && cat info | grep country | awk '{print $2}' | sed -e 's/[^a-z0-9 -]//ig')" ; echo "" ; echo "$(wget -qO- ifconfig.me):81" ; echo "" ; echo "" ; echo "" ; echo "@cloudflare" )|openssl req -new -x509 -key key.pem -out cert.pem -days 1095 > /dev/null 2>&1
 cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 service stunnel4 restart > /dev/null 2>&1
-echo -e "SSL ACtivo Exitosamente"
+echo -e "SSL Activo Exitosamente"
 }
 
 
@@ -393,7 +393,7 @@ screen -dmS pythonwe python $HOME/proxy_copia.py -p $redirporta&
 menuintro() {
 clear&&clear
 echo -e "\033[1;31m————————————————————————————————————————————————————\033[1;37m"
-echo -e "\033[1;30m              PYTHON + SSL | By: @WOLI0101 "
+echo -e "\033[1;34m              PYTHON + SSL | By: @WOLI0101 "
 echo -e "\033[1;31m————————————————————————————————————————————————————\033[1;37m"
 echo -e "\033[1;36m        SCRIPT REESTRUCTURA y AUTOCONFIGURACION "
 echo -e "\033[1;31m————————————————————————————————————————————————————\033[1;37m"
