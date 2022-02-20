@@ -111,7 +111,7 @@ echo "crz: $(date)" > /usr/share/.plus/.plus
 }
 fun_bar 'fun_attlist'
 clear
-echo ""
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-18s\n' "  AGUARDE LA INSTALACION" ; tput sgr0
 echo -e "          \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mINSTALANDO PAQUETES \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"
 echo ""
 echo -e "\033[1;33mALGUNOS PAQUETES SON EXTREMADAMENTE NECESARIOS !\033[0m"
@@ -126,7 +126,7 @@ pip install speedtest-cli
 fun_bar 'inst_pct'
 [[ -f "/usr/sbin/ufw" ]] && ufw allow 443/tcp ; ufw allow 80/tcp ; ufw allow 3128/tcp ; ufw allow 8799/tcp ; ufw allow 8080/tcp
 clear
-echo ""
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-18s\n' "  AGUARDE LA INSTALACION" ; tput sgr0
 echo -e "              \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mFINALIZANDO \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"
 echo ""
 echo -e "      \033[1;33mCONCLUYENDO FUNCIONES Y DEFINICIONES! \033[0m"
