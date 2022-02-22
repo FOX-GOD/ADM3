@@ -46,7 +46,7 @@ barra="---------------------------------"
  
  ssl_stunel () {
  [[ $(mportas|grep stunnel4|head -1) ]] && {
- echo -e "\\033[1;33m  "Deteniendo Stunnel")"
+ echo -e "\\033[1;33m  Deteniendo Stunnel"
  echo -e $barra
  service stunnel4 stop > /dev/null 2>&1
  rm -rf /etc/stunnel/stunnel.conf
@@ -103,7 +103,7 @@ echo -e $barra
  sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
  service stunnel4 restart > /dev/null 2>&1
 echo -e $barra
- echo -e "\\033[1;33m  "INSTALADO CON EXITO")"
+ echo -e "\\033[0;37m  INSTALADO CON EXITO"
  echo -e $barra
  rm -rf /etc/ger-frm/stunnel.crt > /dev/null 2>&1
  rm -rf /etc/ger-frm/stunnel.key > /dev/null 2>&1
@@ -149,8 +149,8 @@ echo -e $barra
  sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
  service stunnel4 restart > /dev/null 2>&1
  echo -e $barra
- echo -e "${cor[4]}            INSTALADO CON EXITO"
- msg -bar
+ echo -e "\033[0;37m            INSTALADO CON EXITO"
+ echo -e $barra
  rm -rf /etc/ger-frm/stunnel.crt > /dev/null 2>&1
  rm -rf /etc/ger-frm/stunnel.key > /dev/null 2>&1
  rm -rf /root/stunnel.crt > /dev/null 2>&1
