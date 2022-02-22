@@ -86,7 +86,7 @@ echo -e $barra
      unset SSLPORT
      done
  echo -e $barra
- echo -e "\\033[1;33m   "Instalando SSL")"
+ echo -e "\\033[1;32m    Instalando SSL..."
  echo -e $barra
  fun_bar "apt-get install stunnel4 -y"
  apt-get install stunnel4 -y > /dev/null 2>&1
@@ -141,7 +141,7 @@ echo -e $barra
      unset SSLPORT
      done
  echo -e $barra
- echo -e "\\033[1;33m    Instalando SSL"
+ echo -e "\\033[1;32m    Instalando SSL..."
  echo -e $barra
  fun_bar "apt-get install stunnel4 -y"
  echo -e "client = no\\n[SSL+]\\ncert = /etc/stunnel/stunnel.pem\\naccept = ${SSLPORT}\\nconnect = 127.0.0.1:${DPORT}" >> /etc/stunnel/stunnel.conf
