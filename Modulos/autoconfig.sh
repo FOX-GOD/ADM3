@@ -3,7 +3,7 @@
 barra="---------------------------------"
 # r="/usr/local/protec/rip" && [[ ! -d ${r} ]] && exit
  r >/dev/null 2>&1
- #25/01/2021 by @Kalix1
+ #20/2/2022
  clear
 # SCPdir="/etc/VPS-MX"
 #SCPdir="/etc/VPSManager""
@@ -130,7 +130,7 @@ echo -e $barra
           done
  echo e $barra
  DPORT="$(mportas|grep $portx|awk '{print $2}'|head -1)"
- echo -e "\\033[1;33m $(fun_trans  "Ahora Que Puerto sera SSL")"
+ echo -e "\\033[1;33m Ahora Que Puerto sera SSL"
  echo -e $barra
      while true; do
  	echo -ne "\\033[1;37m"
@@ -148,7 +148,7 @@ echo -e $barra
  ######-------
  sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
  service stunnel4 restart > /dev/null 2>&1
- msg -bar
+ echo -e $barra
  echo -e "${cor[4]}            INSTALADO CON EXITO"
  msg -bar
  rm -rf /etc/ger-frm/stunnel.crt > /dev/null 2>&1
