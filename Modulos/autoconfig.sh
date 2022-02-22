@@ -82,7 +82,7 @@ echo -e $barra
      read -p " Puerto SSL: " SSLPORT
  	echo ""
      [[ $(mportas|grep -w "$SSLPORT") ]] || break
-     echo -e "\\033[1;33m $(fun_trans  "Esta puerta está en uso")"
+     echo -e "\\033[1;33m Esta puerta está en uso"
      unset SSLPORT
      done
  echo -e $barra
@@ -113,10 +113,10 @@ echo -e $barra
  }
 # SPR &
  ssl_stunel_2 () {
- echo -e "\\033[1;32m $(fun_trans  "             AGREGAR MAS PUERTOS SSL")"
+ echo -e "\\033[1;32m              AGREGAR MAS PUERTOS SSL"
  echo -e $barra
- echo -e "\\033[1;33m $(fun_trans  "Seleccione una puerta de redirección interna.")"
- echo -e "\\033[1;33m $(fun_trans  "Un puerto SSH/DROPBEAR/SQUID/OPENVPN/SSL")"
+ echo -e "\\033[1;33m   Seleccione una puerta de redirección Interna."
+ echo -e "\\033[1;33m   Un Puerto SSH/DROPBEAR/SQUID/OPENVPN/SSL"
  echo -e $barra
           while true; do
           echo -ne "\\033[1;37m"
@@ -128,10 +128,10 @@ echo -e $barra
               fi
           fi
           done
- msg -bar
+ echo e $barra
  DPORT="$(mportas|grep $portx|awk '{print $2}'|head -1)"
  echo -e "\\033[1;33m $(fun_trans  "Ahora Que Puerto sera SSL")"
- msg -bar
+ echo -e $barra
      while true; do
  	echo -ne "\\033[1;37m"
      read -p " Listen-SSL: " SSLPORT
@@ -140,9 +140,9 @@ echo -e $barra
      echo -e "\\033[1;33m $(fun_trans  "Esta puerta está en uso")"
      unset SSLPORT
      done
- msg -bar
- echo -e "\\033[1;33m $(fun_trans  "Instalando SSL")"
- msg -bar
+ echo -e $barra
+ echo -e "\\033[1;33m    Instalando SSL"
+ echo -e $barra
  fun_bar "apt-get install stunnel4 -y"
  echo -e "client = no\\n[SSL+]\\ncert = /etc/stunnel/stunnel.pem\\naccept = ${SSLPORT}\\nconnect = 127.0.0.1:${DPORT}" >> /etc/stunnel/stunnel.conf
  ######-------
