@@ -5,7 +5,6 @@ barra="---------------------------------"
  r >/dev/null 2>&1
  #25/01/2021 by @Kalix1
  clear
- clear
 # SCPdir="/etc/VPS-MX"
 #SCPdir="/etc/VPSManager""
 # SCPfrm="${SCPdir}/herramientas" && [[ ! -d ${SCPfrm} ]] && exit
@@ -115,10 +114,10 @@ echo -e $barra
 # SPR &
  ssl_stunel_2 () {
  echo -e "\\033[1;32m $(fun_trans  "             AGREGAR MAS PUERTOS SSL")"
- msg -bar
+ echo -e $barra
  echo -e "\\033[1;33m $(fun_trans  "Seleccione una puerta de redirección interna.")"
  echo -e "\\033[1;33m $(fun_trans  "Un puerto SSH/DROPBEAR/SQUID/OPENVPN/SSL")"
- msg -bar
+ echo -e $barra
           while true; do
           echo -ne "\\033[1;37m"
           read -p " Puerto-Local: " portx
@@ -166,7 +165,7 @@ echo -e  $barra
   apt-get install python -y &>/dev/null && echo -e "\\033[1;97m Activando Python Direc 80\\n"
   
   sleep 3  
-  screen -dmS pydic-80 python /etc/VPSManager/proxy.py 80 "VPSManager" && echo "80 VPSManager" >> /etc/VPSManager/PySSL.log
+  screen -dmS pydic-80 python /etc/VPSManager/wsproxy.py 80 "VPSManager" && echo "80 VPSManager" >> /etc/VPSManager/PySSL.log
  echo -e $barra
   } 
   install_ssl(){  
@@ -199,7 +198,7 @@ echo -e $barra
  service stunnel4 stop > /dev/null 2>&1
  apt-get purge stunnel4 -y &>/dev/null
  apt-get purge stunnel -y &>/dev/null
- kill -9 $(ps aux |grep -v grep |grep -w "proxy.py"|grep dmS|awk '{print $2}') &>/dev/null
+ kill -9 $(ps aux |grep -v grep |grep -w "wsproxy.py"|grep dmS|awk '{print $2}') &>/dev/null
  rm /etc/VPSManager/PySSL.log &>/dev/null
  clear
 echo -e $barra
