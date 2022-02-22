@@ -128,12 +128,12 @@ echo -e $barra
               fi
           fi
           done
- echo e $barra
+ echo -e $barra
  DPORT="$(mportas|grep $portx|awk '{print $2}'|head -1)"
- echo -e "\\033[1;33m Ahora Que Puerto sera SSL"
+ echo -e "\033[1;33m Ahora Que Puerto sera SSL"
  echo -e $barra
      while true; do
- 	echo -ne "\\033[1;37m"
+ 	echo -ne "\033[1;37m"
      read -p " Listen-SSL: " SSLPORT
  	echo ""
      [[ $(mportas|grep -w "$SSLPORT") ]] || break
