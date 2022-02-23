@@ -103,7 +103,7 @@ echo -e $barra
  sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
  service stunnel4 restart > /dev/null 2>&1
 echo -e $barra
- echo -e "\\033[0;37m  INSTALADO CON EXITO"
+ echo -e "\033[0;37m  INSTALADO CON EXITO"
  echo -e $barra
  rm -rf /etc/ger-frm/stunnel.crt > /dev/null 2>&1
  rm -rf /etc/ger-frm/stunnel.key > /dev/null 2>&1
