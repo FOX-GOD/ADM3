@@ -382,15 +382,15 @@ echo -e $barra
 echo -e  $barra
 echo -e $barra
 echo -e $barra
- echo -e "${cor[3]}       INSTALADOR MULTI SSL "
+ echo -e "${cor[3]}        INSTALADOR MULTI SSL"
  echo -e $barra
- echo -e "${cor[1]}            Escoja la opcion deseada."
+ echo -e "${cor[1]}      Escoja la opcion deseada."
 echo -e $barra
  echo -e "${cor[4]} 1).-\\033[1;37m INICIAR || DETENER SSL $stunel"
  echo -e "${cor[4]} 2).-\\033[1;37m AGREGAR + PUERTOS SSL   "
 echo -e $barra
- echo -e "${cor[4]} 3).-\\033[1;37m SSL+WEBSOCKET DIRECTO\\e[0m"
- echo -e "${cor[4]} 4).-\\033[1;37m DETENER SERVICIO SSL+WEBSOCKET  "
+ echo -e "${cor[4]} 3).-\\033[1;37m PYTHON + SSL DIRECTO\\e[0m"
+ echo -e "${cor[4]} 4).-\\033[1;37m DETENER SERVICIO PYTHON+SSL\\e[0m"
 echo -e $barra
  echo -e "${cor[4]} 5).-\\033[1;37m CERTIFICADO SSL/TLS\\e[0m"
  echo -e $barra
