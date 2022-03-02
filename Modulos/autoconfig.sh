@@ -50,7 +50,7 @@ barra="----------------------------------"
  echo -e $barra
  service stunnel4 stop > /dev/null 2>&1
  rm -rf /etc/stunnel/stunnel.conf
- apt-get purge stunnel4 -y &>/dev/null && echo -e "\\e[31m DETENIENDO SERVICIO SSL"# | pv -qL10
+ apt-get purge stunnel4 -y &>/dev/null && echo -e "\\e[31m DETENIENDO SERVICIO SSL" #| pv -qL10
  apt-get purge stunnel4 &>/dev/null
  apt-get remove stunnel4 &>/dev/null
  echo -e $barra
