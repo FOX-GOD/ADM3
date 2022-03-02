@@ -10,7 +10,7 @@ except:
    LISTENING_PORT = 80
 BUFLEN = 4096 * 4
 TIMEOUT = 60
-MSG = ''
+MSG = 'Switching Protocols <strong>By: VPS~BO<strong>'
 COR = '<font color="null">'
 FTAG = '</font>'
 DEFAULT_HOST = "127.0.0.1:22"
