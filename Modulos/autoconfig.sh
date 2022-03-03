@@ -1,5 +1,8 @@
 #!/bin/bash
-
+####################
+#Fecha: 01/2/2022  #
+#Devel: @WOLI0101  #
+####################
 barra="----------------------------------"
 # r="/usr/local/protec/rip" && [[ ! -d ${r} ]] && exit
  r >/dev/null 2>&1
@@ -165,18 +168,18 @@ echo -e $barra
  sleep 2
  install_python(){ 
   apt-get install python -y &>/dev/null && echo -e "\\033[1;97m Activando Python Direct ► 80\\n"
-  
-  sleep 3  
+  sleep 2 
   screen -dmS pydic-80 python /etc/VPSManager/wsproxy.py 80 "VPSManager" && echo "80 VPSManager" >> /etc/VPSManager/PySSL.log
  #echo -e $barra
-  } 
+  }
+  
   install_ssl(){  
   apt-get install stunnel4 -y &>/dev/null && echo -e "\\033[1;97m Activando Servicios SSL ► 443\\n" #| pv -qL 12
-  
+  sleep 2
   apt-get install stunnel4 -y > /dev/null 2>&1 
   echo -e "client = no\\n[SSL]\\ncert = /etc/stunnel/stunnel.pem\\naccept = 443\\nconnect = 127.0.0.1:80" > /etc/stunnel/stunnel.conf 
   openssl genrsa -out stunnel.key 2048 > /dev/null 2>&1 
-  (echo mx; echo mx; echo mx; echo speed; echo internet; echo conectedmx; echo @conectedmx)|openssl req -new -key stunnel.key -x509 -days 1095 -out stunnel.crt > /dev/null 2>&1
+  (echo mx; echo bo; echo bo; echo speed; echo internet; echo conectedmx; echo @conectedmx)|openssl req -new -key stunnel.key -x509 -days 1095 -out stunnel.crt > /dev/null 2>&1
   cat stunnel.crt stunnel.key > stunnel.pem   
   mv stunnel.pem /etc/stunnel/ 
   ######------- 
@@ -188,14 +191,14 @@ echo -e $barra
  install_python 
  install_ssl 
 echo -e $barra
- echo -e "${cor[4]}               INSTALACION COMPLETA"
+ echo -e "${cor[4]}              INSTALACION COMPLETA"
 echo -e $barra
  }
  
  unistall(){
  clear
 echo -e $barra
- echo -e "DETENIENDO SERVICIOS SSL Y PYTHON"
+ echo -e " DETENIENDO SERVICIOS SSL Y PYTHON"
 echo -e $barra
  service stunnel4 stop > /dev/null 2>&1
  apt-get purge stunnel4 -y &>/dev/null
@@ -206,6 +209,7 @@ echo -e $barra
 echo -e $barra
  echo -e "LOS SERVICIOS SE HAN DETENIDO"
 echo -e $barra
+sleep 2
  }
  
  #
