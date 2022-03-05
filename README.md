@@ -3,7 +3,7 @@
 __v.a 1.0__
 
 __Recomendado__
-- Ubuntu 16 , 18 , 20 -
+- Ubuntu 16 , 18 , 20 
 
 __Instalar solo SCRIPT__
 
