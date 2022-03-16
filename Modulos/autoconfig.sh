@@ -387,13 +387,14 @@ sleep 2
  stunel="\\e[31m[OFF]"
  fi
 echo -e $barra
+echo -e "\e[1;41m   SCRIPT   |   ADM ~ WOLI   |   VERSION 3.0 \e[0m"
 echo -e $barra
  echo -e "${cor[3]}        INSTALADOR MULTI SSL"
  echo -e $barra
  echo -e "${cor[1]}      Escoja la opcion deseada."
 echo -e $barra
  echo -e "${cor[4]} 1).-\\033[1;37m INICIAR || DETENER SSL $stunel"
- echo -e "${cor[4]} 2).-\\033[1;37m AGREGAR + PUERTOS SSL"
+ echo -e "${cor[4]} 2).-\\033[1;37m AGREGAR + PUERTOS SSL\e[0m"
 echo -e $barra
  echo -e "${cor[4]} 3).-\\033[1;37m INICIAR SSL+PYTHON DIRECTO\\e[0m"
  echo -e "${cor[4]} 4).-\\033[1;37m DETENER SERVICIO SSL+PYTHON\\e[0m"
