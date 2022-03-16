@@ -5,11 +5,7 @@
 ####################
 barra="⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊\e[0m"
 
-# r="/usr/local/protec/rip" && [[ ! -d ${r} ]] && exit
- r >/dev/null 2>&1
- #20/2/2022
  clear
-# SCPdir="/etc/VPS-MX"
 #SCPdir="/etc/VPSManager"
 # SCPfrm="${SCPdir}/herramientas" && [[ ! -d ${SCPfrm} ]] && exit
 # SCPinst="${SCPdir}/wsproxy.py"&& [[ ! -d ${SCPinst} ]] && exit
