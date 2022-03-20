@@ -339,7 +339,7 @@ echo "$username $sshlimiter" >>/root/usuarios.db
 		}
 		
 		echo ""
-		echo -e "\E[44;1;37m       CUENTA SSH CREADA !      \E[0m"
+		echo -e "\E[44;1;37m       ! CUENTA SSH CREADA !        \E[0m"
 		echo -e "\n\033[1;32mIP: \033[1;37m$IP"
 		echo -e "\033[1;32mUsuário: \033[1;37m$username"
 		echo -e "\033[1;32mContraseña: \033[1;37m$password"
@@ -379,7 +379,7 @@ echo "$username $sshlimiter" >>/root/usuarios.db
 		}
 	} || {
                 echo ""
-		echo -e "\E[44;1;37m       ! CONTA SSH CRIADA !        \e[0m"
+		echo -e "\E[44;1;37m         ! CONTA SSH CRIADA !          \e[0m"
 		echo -e "\n\033[1;32mIP: \033[1;37m$IP"
 		echo -e "\033[1;32mUsuário: \033[1;37m$username"
 		echo -e "\033[1;32mSenha: \033[1;37m$password"
@@ -389,7 +389,7 @@ echo "$username $sshlimiter" >>/root/usuarios.db
 	
         } || {
 	echo ""
-	echo -e "\E[44;1;37m       ! CUENTA SSH CREADA !        \e[0m"
+	echo -e "\E[44;1;37m         ! CUENTA SSH CREADA !          \e[0m"
 	echo -e "\n\033[1;32mIP: \033[1;37m$IP"
 	echo -e "\033[1;32mUsuário: \033[1;37m$username"
 	echo -e "\033[1;32mContraseña: \033[1;37m$password"
