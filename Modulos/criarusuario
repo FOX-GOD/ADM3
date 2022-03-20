@@ -248,8 +248,9 @@ fun_edithost() {
         fun_edithost
     fi
 }
+
 [[ ! -e /usr/lib/vpsmanager ]] && exit 0
-tput setaf 7;tput setab 4;tput bold;printf '%30s%s%-15s\n' "CREAR USUARIOS SSH";tput sgr0
+tput setaf 7;tput setab 4;tput bold;printf '%30s%s%-9s\n' "      CREAR USUARIO SSH/SSL/DROPBEAR";tput sgr0
 echo ""
 echo -ne "\033[1;32mName of User:\033[1;37m ";read username
 [[ -z $username ]] && {
