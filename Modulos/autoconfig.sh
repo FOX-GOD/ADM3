@@ -50,7 +50,7 @@ barra="⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊⚊�
  echo -e $barra
  service stunnel4 stop > /dev/null 2>&1
  rm -rf /etc/stunnel/stunnel.conf
- apt-get purge stunnel4 -y &>/dev/null && echo -e "\\e[31m DETENIENDO SERVICIO SSL" #| pv -qL10
+ apt-get purge stunnel4 -y &>/dev/null && echo -e "\\e[31m DETENIENDO SERVICIO SSL \e[0m" #| pv -qL10
  apt-get purge stunnel4 &>/dev/null
  apt-get remove stunnel4 &>/dev/null
  echo -e $barra
@@ -195,7 +195,7 @@ echo -e $barra
  unistall(){
  clear
 echo -e $barra
- echo -e " DETENIENDO SERVICIOS SSL Y PYTHON"
+ echo -e " DETENIENDO SERVICIOS SSL Y PYTHON\e[0m"
 echo -e $barra
  service stunnel4 stop > /dev/null 2>&1
  apt-get purge stunnel4 -y &>/dev/null
@@ -204,7 +204,7 @@ echo -e $barra
  rm /etc/VPSManager/PySSL.log &>/dev/null
  clear
 echo -e $barra
- echo -e "LOS SERVICIOS SE HAN DETENIDO"
+ echo -e "LOS SERVICIOS SE HAN DETENIDO\e[0m"
 echo -e $barra
 sleep 2
  }
@@ -389,16 +389,16 @@ echo -e $barra
  echo -e $barra
  echo -e "${cor[1]}      Escoja la opcion deseada."
 echo -e $barra
- echo -e "${cor[4]} 1).-\\033[1;37m INICIAR || DETENER SSL $stunel"
+ echo -e "${cor[4]} 1).-\\033[1;37m INICIAR || DETENER SSL $stunel\e[0m"
  echo -e "${cor[4]} 2).-\\033[1;37m AGREGAR + PUERTOS SSL\e[0m"
 echo -e $barra
- echo -e "${cor[4]} 3).-\\033[1;37m INICIAR SSL+PYTHON DIRECTO\\e[0m"
- echo -e "${cor[4]} 4).-\\033[1;37m DETENER SERVICIO SSL+PYTHON\\e[0m"
+ echo -e "${cor[4]} 3).-\\033[1;37m INICIAR SSL+PYTHON DIRECTO\e[0m"
+ echo -e "${cor[4]} 4).-\\033[1;37m DETENER SERVICIO SSL+PYTHON\e[0m"
 echo -e $barra
- echo -e "${cor[4]} 5).-\\033[1;37m CERTIFICADO SSL/TLS\\e[0m"
- echo -e "${cor[4]} 0).-\\033[1;37m VOLVER A CONEXIONES\\e[0m"
+ echo -e "${cor[4]} 5).-\\033[1;37m CERTIFICADO SSL/TLS\e[0m"
+ echo -e "${cor[4]} 0).-\\033[1;37m VOLVER A CONEXIONES\e[0m"
  echo -e $barra
- echo -ne "\\033[1;37mDIGITE UN NÚMERO [0/5]: "
+ echo -ne "\\033[1;37mElija Una Opcion de [0/5]: "
  read opcao
  case $opcao in
  1)
@@ -438,5 +438,5 @@ echo -e $barra
  ;;
  esac
  ;;
- esac 
- 
+ esac
+ conexao
