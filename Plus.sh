@@ -40,7 +40,7 @@ function verif_key () {
 krm=$(echo '5:q-3gs2.o7%8:1'|rev); chmod +x $_Ink/list > /dev/null 2>&1
 [[ ! -e "$_Ink/list" ]] && {
   echo -e "\n\033[1;31mKEY INVÁLIDA!\033[0m"
-  rm -rf $HOME/Plus > /dev/null 2>&1
+  rm -rf $HOME/Plus.sh > /dev/null 2>&1
   sleep 2
   clear; exit 1
 }
@@ -145,5 +145,5 @@ echo -e "        \033[1;33m • \033[1;32mINSTALACION COMPLETA\033[1;33m • \03
 echo ""
 echo -e "\033[1;31m \033[1;33mCOMANDO PRINCIPAL: \033[0;31mmenu ¤ adm-woli\033[0m"
 echo -e " \033[1;33mMAS INFORMACIÓN \033[1;31m(\033[1;34mTELEGRAM\033[1;31m): \033[1;36m@TestS_BO_VPSs\033[0m "
-rm $HOME/Plus && cat /dev/null > ~/.bash_history && history -c
+rm $HOME/Plus.sh && cat /dev/null > ~/.bash_history && history -c
 #fin
