@@ -14,3 +14,4 @@ __Instalar solo SCRIPT__
 __Instalar el SCRIPT y actualizar paquetes del sistema__
 
 ````apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/FOX-GOD/Prime/main/Plus; chmod 777 Plus;./Plus````
+
