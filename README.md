@@ -9,7 +9,7 @@ __Recomendado__
 
 __Instalar solo SCRIPT__
 
-````wget https://raw.githubusercontent.com/FOX-GOD/Prime/main/Plus; chmod 777 Plus;./Plus````
+````wget https://raw.githubusercontent.com/FOX-GOD/Prime/main/Plus.sh; chmod 777 Plus;./Plus.sh````
 
 __Instalar el SCRIPT y actualizar paquetes del sistema__
 
