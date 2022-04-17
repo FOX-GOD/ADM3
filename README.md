@@ -3,6 +3,7 @@
 __v.a 2.0__
 
 __v.a 1.0__
+_Final Version_ 
 
 __Recomendado__
 - Ubuntu 16 , 18 , 20 
