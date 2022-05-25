@@ -1,0 +1,9 @@
+#!bin/bash
+ touch $HOME/fim
+echo -ne "Mi nombre es:"
+read nombre
+echo -ne "Mi edad es:"
+read edad
+echo -ne "Me gusta:"
+read gusta
+echo "Me llamo $nombre tengo $edad años y me gusta $gusta"
